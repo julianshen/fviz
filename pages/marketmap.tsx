@@ -1,17 +1,15 @@
 import { Box, Container, Drawer, IconButton, Paper, Toolbar, Typography } from "@material-ui/core";
 import AppBar from '@material-ui/core/AppBar';
 import Treemap from "../components/Treemap";
-import TextField from '@material-ui/core/TextField';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { useDebugValue, useEffect, useState } from "react";
+import { useState } from "react";
 import clsx from 'clsx';
-import MenuIcon from '@material-ui/icons/Menu';
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import { ChevronLeft, ChevronRight, Today } from "@material-ui/icons";
 import zhTW from "date-fns/locale/zh-TW";
-import { DateType } from "@date-io/type";
+import { format } from 'date-fns'
 
 const drawerWidth = 320;
 
@@ -119,10 +117,10 @@ export default function MarketMap() {
                 edge="start"
                 className={clsx(classes.menuButton, open && classes.hide)}
             >
-                    <Today />
+                  <Today />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                    台股板塊圖
+                    台股板塊圖 - {format(selectedDate,"EEEE, MMMdo yyyy", {locale:zhTW})}
                 </Typography>
             </Toolbar>
         </AppBar>
